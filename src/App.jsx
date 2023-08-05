@@ -6,9 +6,10 @@ export default function App() {
   const store = useSelector((state)=>state)
   const [handleAmount,setHandleAmount] = useState();
   
-  const UserDeposit = ((addr)=>{
-   
-    store?.counter?.webRecord?.exchange_contract?.methods.deposit(handleAmount).send({
+  const UserDeposit = (()=>{
+   var  amt = (handleAmount*1e18).toString()
+   alert(amt)
+    store?.counter?.webRecord?.exchange_contract?.methods.deposit(amt).send({
       from:store?.counter?.walletAddress,
       value:0,
     }).then((res)=>{

@@ -5,10 +5,13 @@ import { useSelector } from 'react-redux'
 export default function Reward() {
   const store = useSelector((state)=>state)
   const [handleAmount,setHandleAmount] = useState();
+  const [handleRoi,setHandleRoi] = useState();
 
 
-  const UserWithdraw = ((addr)=>{
-    store?.counter?.webRecord?.exchange_contract?.methods.withdraw(handleAmount).send({
+  const UserWithdraw = (()=>{
+    var  amt = (handleAmount*1e18).toString()
+    alert(amt)
+    store?.counter?.webRecord?.exchange_contract?.methods.withdraw(amt).send({
       from:store.counter.walletAddress,
       value:0,
     }).then((res)=>{
@@ -18,7 +21,17 @@ export default function Reward() {
     })
   })  
   // console.log(handleAmount)
+  
 
+  const userRoi = (()=>{
+    store?.counter?.webRecord?.exchange_contract?.methods.pendingReward(store.counter.walletAddress)
+    .call()
+    .then((res)=>{
+      setHandleRoi(res);
+    }).catch((err)=>{
+        console.log(err);
+    })
+  })
 
   return (
    <>
@@ -31,14 +44,14 @@ export default function Reward() {
           Available For Harvest 
         </div>
         <div>
-          <input required  readOnly type="text"/>
+          <input value={handleRoi} required  readOnly type="text"/>
         </div>
         <div className='fs-5 fw-bold my-3'>
          Enter Amount to Harvest 
         </div>
         <div>
           <input onChange={(e)=>{
-            setHandleAmount(e.target.value)
+            setHandleAmount(e.target.value )
           }}   pattern="[0-9]+" type="text"/>
         </div>
 
@@ -47,6 +60,9 @@ export default function Reward() {
         </button>
 
       </div>
+
+
+      
 
 
     </div>
