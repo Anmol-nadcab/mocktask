@@ -8,7 +8,7 @@ export default function App() {
   
   const UserDeposit = (()=>{
    var  amt = (handleAmount*1e18).toString()
-   alert(amt)
+   
     store?.counter?.webRecord?.exchange_contract?.methods.deposit(amt).send({
       from:store?.counter?.walletAddress,
       value:0,

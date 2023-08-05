@@ -10,7 +10,7 @@ export default function Reward() {
 
   const UserWithdraw = (()=>{
     var  amt = (handleAmount*1e18).toString()
-    alert(amt)
+    
     store?.counter?.webRecord?.exchange_contract?.methods.withdraw(amt).send({
       from:store.counter.walletAddress,
       value:0,
