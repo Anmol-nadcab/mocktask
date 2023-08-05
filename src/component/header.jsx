@@ -44,7 +44,7 @@ export default function Header() {
               <ul className="navbar-nav">
                 <li className="nav-item">
                   
-                    <b onClick={connect} style={{ cursor: "pointer" }}>  0x....{(store.counter.walletAddress? (store.counter.walletAddress).slice(29): "Connect Wallet")}</b>
+                    <b onClick={connect} style={{ cursor: "pointer" }}>   {(store.counter.walletAddress? "0x...." + (store.counter.walletAddress).slice(29): "Connect Wallet")}</b>
               
                 </li>
               </ul>

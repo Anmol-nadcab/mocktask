@@ -1,11 +1,11 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import Header from './header'
 import { useSelector } from 'react-redux'
 
 export default function Reward() {
   const store = useSelector((state)=>state)
   const [handleAmount,setHandleAmount] = useState();
-  const [handleRoi,setHandleRoi] = useState();
+  const [handleRoi,setHandleRoi] = useState(0);
 
 
   const UserWithdraw = (()=>{
@@ -28,10 +28,17 @@ export default function Reward() {
     .call()
     .then((res)=>{
       setHandleRoi(res);
+      console.log(res);
     }).catch((err)=>{
         console.log(err);
     })
   })
+  useEffect(()=>{
+    setInterval(()=>{
+      userRoi()
+    },1000);
+   
+  },[store.counter.walletAddress])
 
   return (
    <>
