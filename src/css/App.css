@@ -1,0 +1,8 @@
+.bg-Red_setter{
+  background-color: rgb(250, 50, 50);
+}
+.containerSetter{
+  margin-inline :auto;
+
+  max-width: 400px;
+}
