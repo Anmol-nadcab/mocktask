@@ -28,12 +28,32 @@ export default function App() {
 
       <div className='containerSetter mt-5 text-center'>
         <div className='fs-5 fw-bold my-3'>
-          Enter Staking Amount
+          Enter Staking Amount (<a className='fs-6' href="https://testnet.ftmscan.com/address/0x75e7146bb84849e1030a195fb76306d49b5ba8bc"> with token 0x7..A8Bc</a>)
         </div>
-        <div>
-          <input onChange={(e)=>{
+        <div className='row'> 
+        <div className='col-sm'>
+          <input className='me-5' onChange={(e)=>{
             setHandleAmount(e.target.value)
           }} required  pattern="[0-9]+" type="text"/>
+          </div>
+          <div className='col'>
+           <div className='text-danger'>
+            APY
+           </div>
+           <div>
+            6%
+           </div>
+          </div>
+
+          <div className='col '>
+           <div className='text-danger'>
+            Locking Time
+           </div>
+           <div>
+            170 days
+           </div>
+          </div>
+          
         </div>
 
         <button onClick={UserDeposit} className=' mt-3 btn btn-success'>

@@ -15,7 +15,7 @@ export default function Reward() {
       from:store.counter.walletAddress,
       value:0,
     }).then((res)=>{
-      alert("Amount Staked ");
+      alert("Amount Staked");
     }).catch((err)=>{
       alert("Something Went Wrong");
     })
@@ -56,10 +56,19 @@ export default function Reward() {
         <div className='fs-5 fw-bold my-3'>
          Enter Amount to Harvest 
         </div>
-        <div>
+        <div className='row'>
+          <div className='col'>
           <input onChange={(e)=>{
             setHandleAmount(e.target.value )
           }}   pattern="[0-9]+" type="text"/>
+          </div>
+          <div className='col '>
+           <b className='text-danger'>Reward Token Address </b>
+           <div>
+         <a href="https://testnet.ftmscan.com/address/0xfa21fce8373bbce001c63daa3b2182d76f94b116">  0xfa2...f94b116 </a> 
+          </div>
+          </div>
+         
         </div>
 
         <button onClick={UserWithdraw} className=' mt-3 btn btn-success'>
