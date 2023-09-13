@@ -1,8 +1,8 @@
 import Web3 from "web3";
 import {exchange_contract_abi,exchange_contract_address, exchange_token_abi, exchange_token_address }from './config.js'
 const web3 = new Web3(Web3.givenProvider );
-const exchange_contract = new web3.eth.Contract(exchange_contract_abi,exchange_contract_address );
-const token_contract = new web3.eth.Contract(exchange_token_abi,exchange_token_address );
+export const exchange_contract = new web3.eth.Contract(exchange_contract_abi,exchange_contract_address );
+export const token_contract = new web3.eth.Contract(exchange_token_abi,exchange_token_address );
 
 const chainId = "0x61" // bsc testnet
 
@@ -52,7 +52,7 @@ export async function startNow() {
                 window.location.reload();
               });
             }).catch((err)=>{
-console.log(err)
+              console.log(err)
             })
         }
 

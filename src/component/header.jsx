@@ -18,8 +18,8 @@ export default function Header() {
       console.log(res);
       // setWalletAdd(res.userAddress);
       dispatch(setWAlletAddress({data:res.userAddress}))
-      dispatch(setWebRecord({data:res}))
-      dispatch(setTokenRecord({data:res.token_contract}))
+      // dispatch(setWebRecord({data:res}))
+      // dispatch(setTokenRecord({data:res.token_contract}))
 
     }).catch((err)=>{
       console.log(err);
