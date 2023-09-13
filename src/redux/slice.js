@@ -3,6 +3,7 @@ import { createSlice } from '@reduxjs/toolkit'
 const initialState = {
   walletAddress: 0,
   webRecord:{},
+  tokenRecord:{},
 }
 
 export const counterSlice = createSlice({
@@ -15,11 +16,13 @@ export const counterSlice = createSlice({
    },
    setWebRecord:(state,action) =>{
     state.webRecord = action.payload.data
-   } 
+   },setTokenRecord:(state,action) =>{
+    state.tokenRecord = action.payload.data
+   }  
   },
 })
 
 // Action creators are generated for each case reducer function
-export const { setWAlletAddress,setWebRecord } = counterSlice.actions
+export const { setWAlletAddress,setWebRecord,setTokenRecord} = counterSlice.actions
 
 export default counterSlice.reducer

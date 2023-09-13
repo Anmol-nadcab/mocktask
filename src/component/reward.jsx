@@ -1,87 +1,91 @@
-import React, { useEffect, useState } from 'react'
-import Header from './header'
-import { useSelector } from 'react-redux'
+import React, { useEffect, useState } from "react";
+import Header from "./header";
+import { useSelector } from "react-redux";
 
 export default function Reward() {
-  const store = useSelector((state)=>state)
-  const [handleAmount,setHandleAmount] = useState();
-  const [handleRoi,setHandleRoi] = useState(0);
+  const store = useSelector((state) => state);
+  const [handleAmount, setHandleAmount] = useState();
+  const [handleRoi, setHandleRoi] = useState(0);
 
-
-  const UserWithdraw = (()=>{
-    var  amt = (handleAmount*1e18).toString()
-    
-    store?.counter?.webRecord?.exchange_contract?.methods.withdraw(amt).send({
-      from:store.counter.walletAddress,
-      value:0,
-    }).then((res)=>{
-      alert("Amount Staked");
-    }).catch((err)=>{
-      alert("Something Went Wrong");
-    })
-  })  
+  const UserWithdraw = () => {
+    var amt = (handleAmount * 1e18).toString();
+    console.log(store)
+    store?.counter?.webRecord?.exchange_contract?.methods
+      .withdraw(amt)
+      .send({
+        from: store.counter.walletAddress,
+        value: 0,
+      })
+      .then((res) => {
+        alert("Amount Staked");
+      })
+      .catch((err) => {
+        alert("Something Went Wrong");
+      });
+  };
   // console.log(handleAmount)
-  
 
-  const userRoi = (()=>{
-    store?.counter?.webRecord?.exchange_contract?.methods.pendingReward(store.counter.walletAddress)
-    .call()
-    .then((res)=>{
-      setHandleRoi(res);
-      console.log(res);
-    }).catch((err)=>{
+  const userRoi = () => {
+    store?.counter?.webRecord?.exchange_contract?.methods
+      .pendingReward(store.counter.walletAddress)
+      .call()
+      .then((res) => {
+        setHandleRoi(res);
+        console.log(res);
+      })
+      .catch((err) => {
         console.log(err);
-    })
-  })
-  useEffect(()=>{
-    setInterval(()=>{
-      userRoi()
-    },1000);
-   
-  },[store.counter.walletAddress])
+      });
+  };
+  useEffect(() => {
+    setInterval(() => {
+      userRoi();
+    }, 1000);
+  }, [store.counter.walletAddress]);
 
   return (
-   <>
-   <Header/>
-   <div >
-      <h1 className='mt-5 fw-bolder text-center'> CLAIM AMOUNT</h1>
-
-      <div className='containerSetter mt-5 text-center'>
-        <div className='fs-5 fw-bold my-3'>
-          Available For Harvest 
-        </div>
-        <div>
-          <input value={handleRoi} required  readOnly type="text"/>
-        </div>
-        <div className='fs-5 fw-bold my-3'>
-         Enter Amount to Harvest 
-        </div>
-        <div className='row'>
-          <div className='col'>
-          <input onChange={(e)=>{
-            setHandleAmount(e.target.value )
-          }}   pattern="[0-9]+" type="text"/>
+    <>
+      <Header />
+      <div className="container">
+        <h1 className="my-5 fw-bold text-center">Sell Festival Ticket </h1>
+        <div className="row">
+          <div className="col-sm card-4 p-4   mx-1 fw-bold">
+            <h2 className=" text-center   pb-3"> List Your Token </h2>
+            <div className="d-flex pb-3 justify-content-between ">
+              <span>Max Selling : 110%</span> <span>Owned Ticket ID :10</span>
+            </div>
+            <div className=" mb-3 d-flex justify-content-between">
+              <span>Current Price : 1 NTT</span>
+            </div>
+            <div className="d-flex justify-content-around">
+              {" "}
+              <label htmlFor="tokenInput">Enter Token ID</label>{" "}
+              <input
+                className="decoInput"
+                placeholder="Token Id"
+                type="text"
+                name="tokenInput"
+                id="tokenInput"
+              />{" "}
+            </div>
+            <div>
+              <div className="d-flex justify-content-around">
+                {" "}
+                <label htmlFor="tokenInput">Enter price &nbsp;&nbsp; &nbsp; &nbsp; </label>{" "}
+                <input
+                  className="decoInput"
+                  placeholder="listing Price"
+                  type="text"
+                  name="priceInput"
+                  id="priceInput"
+                />{" "}
+              </div>
+            </div>
+            <button className=" mt-3 w-100 btn btn-success">List now </button>
           </div>
-          <div className='col '>
-           <b className='text-danger'>Reward Token Address </b>
-           <div>
-         <a href="https://testnet.ftmscan.com/address/0xfa21fce8373bbce001c63daa3b2182d76f94b116">  0xfa2...f94b116 </a> 
-          </div>
-          </div>
-         
         </div>
-
-        <button onClick={UserWithdraw} className=' mt-3 btn btn-success'>
-          Claim Amount
-        </button>
-
+        <div></div>
       </div>
-
-
-      
-
-
-    </div>
-   </>
-  )
+    </>
+  );
 }

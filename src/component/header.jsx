@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import '../css/App.css'
 import { Link } from 'react-router-dom'
 import { startNow } from '../helper/getWeb3'
-import { setWAlletAddress, setWebRecord, webRecord } from '../redux/slice';
+import { setWAlletAddress, setWebRecord, webRecord,setTokenRecord } from '../redux/slice';
 import {useDispatch, useSelector} from "react-redux"
 
 export default function Header() {
@@ -19,6 +19,8 @@ export default function Header() {
       // setWalletAdd(res.userAddress);
       dispatch(setWAlletAddress({data:res.userAddress}))
       dispatch(setWebRecord({data:res}))
+      dispatch(setTokenRecord({data:res.token_contract}))
+
     }).catch((err)=>{
       console.log(err);
     })
@@ -30,14 +32,14 @@ export default function Header() {
       <>
     <nav className="navbar navbar-expand-lg navbar-light  bg-Red_setter">
   <div className="container-fluid">
-    <a className="  navbar-brand text-white" href="#"> TESTING</a>
+    <a className=" fw-bold  navbar-brand text-white" href="#"> Festival Tickets</a>
     <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
       <span className="navbar-toggler-icon"></span>
     </button>
     <div className="collapse navbar-collapse" id="navbarNavAltMarkup">
       <div className="navbar-nav">
-      <Link to="/" className=" mx-5 nav-link active" aria-current="page" href="#"><span className='text-white fw-bold'> Deposit  </span></Link>
-       <Link to="/reward" className=" mx-5  nav-link" href="#"><span className='text-white fw-bold'> Reward  </span> </Link>
+      <Link to="/" className=" mx-5 nav-link active" aria-current="page" href="#"><span className='text-white fw-bold'>  Buy Ticket  </span></Link>
+       <Link to="/reward" className=" mx-5  nav-link" href="#"><span className='text-white fw-bold'> Sell Ticket  </span> </Link>
       </div>
     </div>
     <div className="ms-2 ">

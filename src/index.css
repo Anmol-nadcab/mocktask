@@ -11,3 +11,13 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.card-4 {
+  box-shadow: 0px 0px 5px rgb(14, 1, 5);
+}
+.decoInput{
+  outline: none;
+  width: 250px;
+  height: 37px;
+  border: 1px solid rgb(199, 190, 190);
+}
