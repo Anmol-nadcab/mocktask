@@ -56,7 +56,7 @@ export default function Reward() {
     }).then((res)=>{
       alert("succesfull");
     }).catch((err)=>{
-      alert("execution failed");
+      alert("execution failed  ");
     })
   })
 

@@ -4,6 +4,7 @@ import { useSelector } from "react-redux";
 import { useFetcher } from "react-router-dom";
 import { exchange_contract_address } from "./helper/config";
 import { exchange_contract, startNow, token_contract } from "./helper/getWeb3";
+import { logDOM } from "@testing-library/react";
 
 export default function App() {
   const store = useSelector((state) => state);
@@ -19,6 +20,7 @@ export default function App() {
   var counter = 0;
 
   const buyFromOrginser = () => {
+    if((store?.counter?.walletAddress).length>=30 ){
     token_contract.methods
       .allowance(store?.counter?.walletAddress, exchange_contract_address)
       .call()
@@ -63,11 +65,14 @@ export default function App() {
                     });
                 })
                 .catch((ee) => {
-                  alert("execution failed");
+                  alert("execution failed ");
                 });
             }
           });
       });
+    }else{
+      alert("connect Wallet");
+    }
   };
 
   const remainingToken = () => {
@@ -130,7 +135,7 @@ export default function App() {
   };
 
   const buyFromSeller = () => {
-   console.log(handleAmount)
+  if((store?.counter?.walletAddress).length>=30 ){
     token_contract.methods
       .allowance(store?.counter?.walletAddress, exchange_contract_address)
       .call()
@@ -180,6 +185,9 @@ export default function App() {
             }
           });
       });
+    }else{
+    alert("conect wallet");
+    }
   };
 
   // const isListed = ()=>{
@@ -250,7 +258,7 @@ export default function App() {
               <span>Bid Ticket</span> <span>organiser Fees : {adminFees}%</span>
             </div>
             <div className=" mb-2 d-flex justify-content-between">
-              <span>Bid Price : {bidPrice} NTT</span> <span>Total Price : {bidPrice} NTT </span>
+              <span>Bid Price : {bidPrice} NTT</span> <span>Total Price : {(bidPrice/1e18).toFixed(4)} NTT </span>
             </div>
             <div  className="mb-3 d-flex justify-content-between">
               <label className="pt-1" htmlFor="setForTicketId">Enter Ticket ID</label>

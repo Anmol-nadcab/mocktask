@@ -1,5 +1,5 @@
 export const exchange_contract_address =
-  "0xdb33dc2700A56A9F7ba8f790bC67Ccb22C1e04e3";
+  "0x8De1247f5E3100445Fb32F93B96D0eA018C9c191";
 export const exchange_token_address =
   "0xe67b48aa9eaef49a9c23f9bdbcfe7aec191b6c39";
 export const exchange_contract_abi = [
