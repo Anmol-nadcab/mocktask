@@ -47,9 +47,9 @@ export default function Reward() {
   };
 
   const listToken =(()=>{
-    console.log(tokenid,tokenPrice,"tokenid,tokenPrice");
+    console.log(tokenid,(tokenPrice*1e18).toString(),"tokenid,tokenPrice");
     exchange_contract?.methods
-    .sellToken_List(tokenid,tokenPrice)
+    .sellToken_List(tokenid,(tokenPrice*1e18).toString())
     .send({
       from: store?.counter?.walletAddress,
       value: 0,
@@ -78,7 +78,7 @@ export default function Reward() {
               <span>Owned Ticket ID :{nftHold}</span>
             </div>
             <div className=" mb-3 d-flex justify-content-between">
-              <span>Current Price :{ticketLatestPrice/1e18} NTT</span>
+              <span>Current Price :{(ticketLatestPrice/1e18).toFixed(4)} NTT</span>
             </div>
             <div className="d-flex justify-content-around">
               {" "}

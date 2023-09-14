@@ -21,3 +21,9 @@ code {
   height: 37px;
   border: 1px solid rgb(199, 190, 190);
 }
+.setBorder{
+  border: 2px solid rgb(26, 240, 43);
+  margin-top: 20px;
+  padding: 50px;
+  margin: 10px;
+}

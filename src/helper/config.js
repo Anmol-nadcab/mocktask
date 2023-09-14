@@ -1,5 +1,5 @@
 export const exchange_contract_address =
-  "0x8De1247f5E3100445Fb32F93B96D0eA018C9c191";
+  "0x3b39dC343eCb813B8773Ea402addcac41a25F135";
 export const exchange_token_address =
   "0xe67b48aa9eaef49a9c23f9bdbcfe7aec191b6c39";
 export const exchange_contract_abi = [
@@ -112,6 +112,15 @@ export const exchange_contract_abi = [
   {
     inputs: [],
     name: "buyTicketFromOrgniser",
+    outputs: [],
+    stateMutability: "nonpayable",
+    type: "function",
+  },
+  {
+    inputs: [
+      { internalType: "address", name: "newOwnerAddress", type: "address" },
+    ],
+    name: "changeOwnerAddress",
     outputs: [],
     stateMutability: "nonpayable",
     type: "function",
@@ -317,6 +326,7 @@ export const exchange_contract_abi = [
     stateMutability: "view",
     type: "function",
   },
+  { stateMutability: "payable", type: "receive" },
 ];
 export const exchange_token_abi = [
   {
